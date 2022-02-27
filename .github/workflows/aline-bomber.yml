@@ -1,0 +1,35 @@
+name: Alpine Bomber workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      ip:
+        description: 'IP of the target web resource'
+        type: string
+        required: false
+      port:
+        description: 'Port of the target web resource'
+        type: string
+        required: false
+      protocol:
+        description: 'Network protocol that will be used'
+        type: string
+        required: false
+      conections:
+        description: 'Amount of simultaneous connections'
+        type: string
+        required: false
+      time:
+        description: 'Amount of time for running (in seconds)'
+        type: string
+        required: false
+jobs:
+  docker-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          docker run -it --rm alpine/bombardier -c ${{ github.inputs.conections }} -d ${{ github.inputs.time }} -l ${{ github.inputs.ip }}:${{ github.inputs.port }}/${{ github.inputs.protocol }}
