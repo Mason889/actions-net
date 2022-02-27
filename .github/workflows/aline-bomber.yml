@@ -5,22 +5,27 @@ on:
     inputs:
       ip:
         description: 'IP of the target web resource'
+        default: '194.54.14.187'
         type: string
         required: false
       port:
         description: 'Port of the target web resource'
+        default: '53'
         type: string
         required: false
       protocol:
         description: 'Network protocol that will be used'
+        default: 'UDP'
         type: string
         required: false
       conections:
         description: 'Amount of simultaneous connections'
+        default: '1000'
         type: string
         required: false
       time:
         description: 'Amount of time for running (in seconds)'
+        default: '1200s'
         type: string
         required: false
 jobs:
@@ -32,4 +37,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          docker run -it --rm alpine/bombardier -c ${{ github.inputs.conections }} -d ${{ github.inputs.time }} -l ${{ github.inputs.ip }}:${{ github.inputs.port }}/${{ github.inputs.protocol }}
+          docker run --rm alpine/bombardier -c ${{ github.inputs.conections }} -d ${{ github.inputs.time }} -l ${{ github.inputs.ip }}:${{ github.inputs.port }}/${{ github.inputs.protocol }}
