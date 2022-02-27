@@ -2,4 +2,4 @@
 Github Actions net
 
 
-For education purposes only!
+For education purposes only
