@@ -13,8 +13,8 @@ on:
         default: '80'
         type: string
         required: false
-      time:
-        description: 'Turbo'
+      turbo:
+        description: 'Turbo spec (should be between 135 and 443, better to set value from default)'
         default: '135'
         type: string
         required: false
