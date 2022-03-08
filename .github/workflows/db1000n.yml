@@ -1,0 +1,20 @@
+name: db1000n workflow
+
+on: 
+  workflow_dispatch:
+    inputs:
+      russian_ship_go_fuck_yourself:
+        description: ''
+        default: ''
+        type: string
+        required: false
+jobs:
+  docker-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          docker run --rm -i --pull always ghcr.io/arriven/db1000n
